@@ -1,0 +1,95 @@
+<!doctype html>
+<head>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+</head>
+
+<style>
+h3, h4 {text-align: center;}
+span {font-weight: bold;}
+</style>
+
+<script type=text/javascript>
+
+document.onmousedown=disableclick;
+function disableclick(event)
+{
+  if(event.button==2)
+   {
+     return false;    
+   }
+}
+    function adelante() 
+    {
+        $.getJSON('/_Adelante');
+    }
+	
+    function stop() 
+    {
+        $.getJSON('/_Stop');
+    }
+	
+    function atras() 
+    {
+        $.getJSON('/_Atras');
+    }
+    
+    function recto() 
+    {
+        $.getJSON('/_Recto');
+    }
+
+    function derecha() 
+    {
+        $.getJSON('/_Derecha');
+    }
+
+    function izquierda() 
+    {
+        $.getJSON('/_Izquierda');
+    }
+
+</script>
+<!-- Simple JQuery Mobile page that display the button state on the breadoard -->
+<!-- You can also change the LED state with the slider switch -->
+<!-- The Raspberry Pi uptime is displayed in the footer (Jinja2 expands the template tag) -->
+<body oncontextmenu="return false">
+<div data-role="page" data-theme="b">
+  <div data-role="header">
+    <div><h3>Pi Car Web Control</h3></div>
+    <div><h4>This Raspberry Pi has been {{uptime}}</h4></div>	
+  </div>
+
+  <div data-role="content">
+  <table width="100%">
+  <tr>
+  <td width=33%"></td>
+  <td width=33%">  <a href="#" data-role="button" onclick="adelante();"><img src="./static/Up.png" width=64px" height="64px"/></a></td>
+  <td width=33%"></td>
+  <tr>
+  <tr>
+  <td width=33%">   <a href="#" data-role="button" ontouchstart ="izquierda();" ontouchend="recto();"><img src="./static/Left.png" width=64px" height="64px"/></a></td>
+  <td width=33%">    <a href="#" data-role="button" onclick="stop();"><img src="./static/Stop.png" width=64px" height="64px"/></a>  </td>
+  <td width=33%">   <a href="#" data-role="button" ontouchstart="derecha();" ontouchend="recto();"><img src="./static/Right.png" width=64px" height="64px"/></a></a> </td>
+  <tr>
+  <tr>
+  <td width=33%"></td>
+  <td width=33%">    <a href="#" data-role="button" onclick="atras();"><img src="./static/Down.png" width=64px" height="64px"/></a></a></td>
+  <td width=33%"></td>
+  <tr>
+  
+  </table>
+
+
+    
+      
+       
+
+  </div>
+ <div data-role="footer">
+    
+  </div>
+</div>
+</body>
